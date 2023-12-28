@@ -9,7 +9,7 @@ TEST.use(express.json());
 TEST.use(express.urlencoded({ extended: true }));
 
 TEST.get("/",async(req,res)=>{
-    const[result]=await (await dbConnection).query("SELECT * FROM Data");
+    const[result]=await (await dbConnection).query("SELECT * FROM persons");
     res.status(200).json(result);
 })
 
