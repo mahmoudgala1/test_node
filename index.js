@@ -1,9 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const dbConnection = require("./config/database");
+const dbConnection = require("./database");
 
-dotenv.config({ path: "./config.env" });
-process.env.TZ = process.env.TIMEZONE;  
+dotenv.config({ path: "config.env" }); 
 
 const TEST = express();
 TEST.use(express.json());
@@ -13,7 +12,6 @@ TEST.get("/",async(req,res)=>{
     const[result]=await (await dbConnection).query("SELECT * FROM data");
     res.status(200).json(result);
 })
-
 
 
 const PORT = process.env.PORT;
